@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  namespace: {{ .Values.common.namespace }}
+  labels:
+    app.kubernetes.io/name: webapp
+    app.kubernetes.io/instance: webapp
+spec:
+  type: {{ .Values.webapp.service.type }}
+  ports:
+  - name: {{ .Values.webapp.port.name }} 
+    port: {{ .Values.webapp.port.containerPort }}
+    targetPort: {{ .Values.webapp.port.name }}
+    protocol: {{ .Values.webapp.port.protocol }}  
+  selector:
+    app.kubernetes.io/name: webapp
+    app.kubernetes.io/instance: webapp
