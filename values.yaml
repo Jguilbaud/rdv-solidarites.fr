@@ -1,0 +1,77 @@
+common:
+  namespace: rdv-solidarites
+  
+  
+image:
+  repository: rgv1tgx4.gra7.container-registry.ovh.net/rdv-solidarite
+  tag: recette-686f78d0-202206071233
+  pullPolicy: Always
+
+webapp:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+  port:
+    name: http
+    path: /
+    potocol: TCP
+    containerPort: 3000
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: "1"
+      memory: 2Gi
+  readiness:
+    initialDelaySeconds: 30
+    periodSeconds: 30
+  liveness:
+    initialDelaySeconds: 30
+    periodSeconds: 30
+
+
+smtp:
+  address: mail.gandi.net
+  authentification: plain
+  port: 587
+
+
+sms:
+  default_provider: netsize
+  force_provider: netsize
+
+deploy_tasks: db:migrate
+
+franceconnect:
+  disabled: true
+  host: fcp.integ01.dev-franceconnect.fr
+
+host: https://recette.rdv-solidarites.fr
+domain_name: recette.rdv-solidarites.fr
+
+maintenance_page_url: https://recette.rdv-solidarites.fr/maintenance.html
+
+matomo_app_ip: 124
+
+no_vhost: 0
+
+rails:
+  env: development
+  log_to_stdout: enabled
+  log_level: warn
+  serve_static_files: enabled
+
+rack:
+  env: development
+
+rdv_solidarites_instance_name: DEV
+
+redis_url: 
+  
+sentry_environment: staging
+
+sign_in_as_allowed: true
+
+
+

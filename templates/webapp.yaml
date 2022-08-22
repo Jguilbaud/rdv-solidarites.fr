@@ -38,41 +38,60 @@ spec:
             - name: ALTERNATE_SMTP_PORT
               value: {{ .Values.smtp.port | quote }}
             - name: ALTERNATE_SMTP_USERNAME
-              value: {{ .Values.smtp.username | quote }}
-              # valueFrom:
-              #   secretKeyRef:
-              #     name: alternate_smtp
-              #     key: username
+              valueFrom:
+                secretKeyRef:
+                  name: smtp-credentials
+                  key: username
             - name: ALTERNATE_SMTP_PASSWORD
-              value: {{ .Values.smtp.password | quote }}
-              # valueFrom:
-              #   secretKeyRef:
-              #     name: alternate_smtp
-              #     key: password
+              valueFrom:
+                secretKeyRef:
+                  name: smtp-credentials
+                  key: password
             - name: CSP_REPORT_URI
-              value: {{ .Values.csp_report_uri | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: csp-report-uri
+                  key: csp_report_uri
             - name: DATABASE_URL
-              value: {{ .Values.database.url | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: url
             - name: DEFAULT_SMS_PROVIDER
               value: {{ .Values.sms.default_provider | quote }}
             - name: DEFAULT_SMS_PROVIDER_KEY
-              value: {{ .Values.sms.default_provider_key | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sms-credentials
+                  key: default_provider_key
             - name: DEPLOY_TASKS
               value: {{ .Values.deploy_tasks | quote }}
             - name: FORCE_SMS_PROVIDER
               value: {{ .Values.sms.force_provider | quote }}
             - name: FRANCECONNECT_APP_ID
-              value: {{ .Values.franceconnect.app_id | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: franceconnect-credentials
+                  key: app_id
             - name: FRANCECONNECT_APP_SECRET
-              value: {{ .Values.franceconnect.app_secret | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: franceconnect-credentials
+                  key: app_secret
             - name: FRANCECONNECT_DISABLED
               value: {{ .Values.franceconnect.disabled | quote }}
             - name: FRANCECONNECT_HOST
               value: {{ .Values.franceconnect.host | quote }}
             - name: GITHUB_APP_ID
-              value: {{ .Values.github.app_id | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: app_id
             - name: GITHUB_APP_SECRET
-              value: {{ .Values.github.app_secret | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: app_secret
             - name: HOST
               value: {{ .Values.host | quote }}
             - name: MAINTENANCE_PAGE_URL
@@ -80,13 +99,22 @@ spec:
             - name: MATOMO_APP_ID
               value: {{ .Values.matomo_app_ip | quote }}
             - name: NETSIZE_API_USERPWD
-              value: {{ .Values.netsize_api_userpwd | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: netsize_api
+                  key: netsize_api_userpwd
             - name: NO_VHOST
               value: {{ .Values.no_vhost | quote }}
             - name: PLACES_API_KEY
-              value: {{ .Values.places.api_key | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: places-credentials
+                  key: api_key
             - name: PLACES_APP_ID
-              value: {{ .Values.places.app_id | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: places-credentials
+                  key: app_id
             - name: RACK_ENV
               value: {{ .Values.rack.env | quote }}
             - name: RAILS_ENV
@@ -100,23 +128,44 @@ spec:
             - name: REDIS_URL
               value: {{ .Values.redis_url | quote }}
             - name: SECRET_KEY_BASE
-              value: {{ .Values.secret_key_base | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: secret-key-base
+                  key: secret_key_base
             - name: SENDINBLUE_INBOUND_PASSWORD
-              value: {{ .Values.sendibule.inbound_password | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: inbound_password
             - name: SENDINBLUE_PASSWORD
-              value: {{ .Values.sendibule.password | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: password
             - name: SENDINBLUE_SMS_API_KEY
-              value: {{ .Values.sendibule.sms_api_key | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: sms_api_key
             - name: SENDINBLUE_USERNAME
-              value: {{ .Values.sendibule.username | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: username
             - name: SENTRY_DSN_RAILS
-              value: {{ .Values.sendibule.dsn_rails | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: dsn_rails
             - name: SENTRY_ENVIRONMENT
               value: {{ .Values.sentry_environment | quote }}
             - name: SIGN_IN_AS_ALLOWED
               value: {{ .Values.sign_in_as_allowed | quote }}
             - name: SKYLIGHT_AUTHENTICATION
-              value: {{ .Values.skylight_authentication | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: skylight-authentication
+                  key: skylight_authentication
             - name: DOMAIN_NAME
               value: {{ .Values.domain_name | quote }}
             - name: LOG_LEVEL
