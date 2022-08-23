@@ -7,12 +7,12 @@ metadata:
 #     traffic-type: external
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-dev"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    #nginx.ingress.kubernetes.io/whitelist-source-range: "176.160.211.151/32"
+    nginx.ingress.kubernetes.io/whitelist-source-range: "51.91.208.113/32"
 spec:
   tls:
     - hosts:
