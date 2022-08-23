@@ -55,7 +55,7 @@ spec:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: database-url
                   key: url
             - name: DEFAULT_SMS_PROVIDER
               value: {{ .Values.sms.default_provider | quote }}
@@ -101,7 +101,7 @@ spec:
             - name: NETSIZE_API_USERPWD
               valueFrom:
                 secretKeyRef:
-                  name: netsize_api
+                  name: netsize-api
                   key: netsize_api_userpwd
             - name: NO_VHOST
               value: {{ .Values.no_vhost | quote }}
