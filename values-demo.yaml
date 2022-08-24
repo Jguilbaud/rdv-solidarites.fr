@@ -1,0 +1,26 @@
+common:
+  namespace: rdv-solidarites-demo
+
+host: https://demo02.rdv-solidarites.fr
+domain_name: demo02.rdv-solidarites.fr
+
+maintenance_page_url: https://demo02.rdv-solidarites.fr/maintenance.html
+
+matomo_app_ip: 124
+
+no_vhost: 0
+
+rails:
+  env: production
+  log_to_stdout: enabled
+  log_level: warn
+  serve_static_files: enabled
+
+rack:
+  env: production
+
+rdv_solidarites_instance_name: DEMO
+
+redis_url: 
+  
+sentry_environment: staging
