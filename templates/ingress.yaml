@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: recette
+  name: {{ .Values.domain_name }}
   namespace: {{ .Values.common.namespace }}
 #   labels:
 #     traffic-type: external
@@ -16,10 +16,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - recette.rdv-solidarites.fr
+        - {{ .Values.domain_name }}
       secretName: portal-tls
   rules:
-  - host: recette.rdv-solidarites.fr
+  - host: {{ .Values.domain_name }}
     http:
       paths:
       - backend:
