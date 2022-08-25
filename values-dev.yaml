@@ -1,7 +1,7 @@
-host: https://recette.rdv-solidarites.fr
-domain_name: recette.rdv-solidarites.fr
+host: http://localhost:3000
+domain_name: localhost
 
-maintenance_page_url: https://recette.rdv-solidarites.fr/maintenance.html
+maintenance_page_url: http://localhost:3000/maintenance.html
 
 matomo_app_ip: 124
 

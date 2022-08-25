@@ -1,10 +1,11 @@
 common:
   namespace: rdv-solidarites-demo
 
-host: https://demo02.rdv-solidarites.fr
-domain_name: demo02.rdv-solidarites.fr
+host: http://localhost:3000
+domain_name: localhost
+public_url: demo02.rdv-solidarites.fr
 
-maintenance_page_url: https://demo02.rdv-solidarites.fr/maintenance.html
+maintenance_page_url: http://localhost:3000/maintenance.html
 
 matomo_app_ip: 124
 

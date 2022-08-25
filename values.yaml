@@ -4,7 +4,7 @@ common:
   
 image:
   repository: rgv1tgx4.gra7.container-registry.ovh.net/rdv-solidarite
-  tag: recette-686f78d0-202206071233
+  tag: recette-f2e2fe31-202208251152
   pullPolicy: Always
 
 webapp:

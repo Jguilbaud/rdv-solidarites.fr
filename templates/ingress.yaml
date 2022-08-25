@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.domain_name }}
+  name: {{ .Values.public_url }}
   namespace: {{ .Values.common.namespace }}
 #   labels:
 #     traffic-type: external
@@ -16,10 +16,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - {{ .Values.domain_name }}
+        - {{ .Values.public_url }}
       secretName: portal-tls
   rules:
-  - host: {{ .Values.domain_name }}
+  - host: {{ .Values.public_url }}
     http:
       paths:
       - backend:
