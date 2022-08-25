@@ -1,0 +1,195 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobs
+  namespace: {{ .Values.common.namespace }}
+  labels:
+    app.kubernetes.io/name: jobs
+    app.kubernetes.io/instance: jobs
+spec:
+  replicas: {{ .Values.jobs.replicaCount }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: jobs
+      app.kubernetes.io/instance: jobs
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: jobs
+        app.kubernetes.io/instance: jobs
+    spec:
+      imagePullSecrets:
+      - name: docker-regcred
+      containers:
+        - name: jobs
+          image: "{{ .Values.image.repository }}/jobs:{{ .Values.image.tag }}"
+          imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+          env:
+            - name: ALTERNATE_SMTP_ADDRESS
+              value: {{ .Values.smtp.address | quote }}
+            - name: ALTERNATE_SMTP_AUTHENTIFICATION
+              value: {{ .Values.smtp.authentification | quote }}
+            - name: ALTERNATE_SMTP_PORT
+              value: {{ .Values.smtp.port | quote }}
+            - name: ALTERNATE_SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: smtp-credentials
+                  key: username
+            - name: ALTERNATE_SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: smtp-credentials
+                  key: password
+            - name: CSP_REPORT_URI
+              valueFrom:
+                secretKeyRef:
+                  name: csp-report-uri
+                  key: csp_report_uri
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: url
+            - name: DEFAULT_SMS_PROVIDER
+              value: {{ .Values.sms.default_provider | quote }}
+            - name: DEFAULT_SMS_PROVIDER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sms-credentials
+                  key: default_provider_key
+            - name: DEPLOY_TASKS
+              value: {{ .Values.deploy_tasks | quote }}
+            - name: FORCE_SMS_PROVIDER
+              value: {{ .Values.sms.force_provider | quote }}
+            - name: FRANCECONNECT_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: franceconnect-credentials
+                  key: app_id
+            - name: FRANCECONNECT_APP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: franceconnect-credentials
+                  key: app_secret
+            - name: FRANCECONNECT_DISABLED
+              value: {{ .Values.franceconnect.disabled | quote }}
+            - name: FRANCECONNECT_HOST
+              value: {{ .Values.franceconnect.host | quote }}
+            - name: GITHUB_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: app_id
+            - name: GITHUB_APP_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: github-credentials
+                  key: app_secret
+            - name: HOST
+              value: "https://{{ .Values.public_url}}"
+            - name: MAINTENANCE_PAGE_URL
+              value: {{ .Values.maintenance_page_url | quote }}
+            - name: MATOMO_APP_ID
+              value: {{ .Values.matomo_app_ip | quote }}
+            - name: NETSIZE_API_USERPWD
+              valueFrom:
+                secretKeyRef:
+                  name: netsize-api
+                  key: netsize_api_userpwd
+            - name: NO_VHOST
+              value: {{ .Values.no_vhost | quote }}
+            - name: PLACES_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: places-credentials
+                  key: api_key
+            - name: PLACES_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: places-credentials
+                  key: app_id
+            - name: RACK_ENV
+              value: {{ .Values.rack.env | quote }}
+            - name: RAILS_ENV
+              value: {{ .Values.rails.env | quote }}
+            - name: RAILS_LOG_TO_STDOUT
+              value: {{ .Values.rails.log_to_stdout | quote }}
+            - name: RAILS_SERVE_STATIC_FILES
+              value: {{ .Values.rails.serve_static_files | quote }}
+            - name: RDV_SOLIDARITES_INSTANCE_NAME
+              value: {{ .Values.rdv_solidarites_instance_name | quote }}
+            - name: REDIS_URL
+              value: {{ .Values.redis_url | quote }}
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: secret-key-base
+                  key: secret_key_base
+            - name: SENDINBLUE_INBOUND_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: inbound_password
+            - name: SENDINBLUE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: password
+            - name: SENDINBLUE_SMS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: sms_api_key
+            - name: SENDINBLUE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: username
+            - name: SENTRY_DSN_RAILS
+              valueFrom:
+                secretKeyRef:
+                  name: sendibule-credentials
+                  key: dsn_rails
+            - name: SENTRY_ENVIRONMENT
+              value: {{ .Values.sentry_environment | quote }}
+            - name: SIGN_IN_AS_ALLOWED
+              value: {{ .Values.sign_in_as_allowed | quote }}
+            - name: SKYLIGHT_AUTHENTICATION
+              valueFrom:
+                secretKeyRef:
+                  name: skylight-authentication
+                  key: skylight_authentication
+            - name: DOMAIN_NAME
+              value: {{ .Values.public_url | quote }}
+            - name: LOG_LEVEL
+              value: {{ .Values.rails.log_level | quote }}
+          ports:
+            - name: {{ .Values.jobs.port.name }}
+              containerPort: {{ .Values.jobs.port.containerPort }}
+              protocol: {{ .Values.jobs.port.protocol }}
+          # livenessProbe:
+          #   httpGet:
+          #     path: {{ .Values.jobs.port.path }}
+          #     port: {{ .Values.jobs.port.containerPort }}
+          #   initialDelaySeconds: {{ .Values.jobs.initialDelaySeconds }}
+          #   periodSeconds: {{ .Values.jobs.periodSeconds }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.jobs.port.path }}
+              port: {{ .Values.jobs.port.containerPort }}
+            initialDelaySeconds: {{ .Values.jobs.initialDelaySeconds }}
+            periodSeconds: {{ .Values.jobs.periodSeconds }}
+          resources:
+            requests:
+              cpu: {{ .Values.jobs.resources.requests.cpu }}
+              memory: {{ .Values.jobs.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.jobs.resources.limits.cpu }}
+              memory: {{ .Values.jobs.resources.limits.memory }}
