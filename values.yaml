@@ -30,6 +30,29 @@ webapp:
     initialDelaySeconds: 30
     periodSeconds: 30
 
+jobs:
+  replicaCount: 1
+  service:
+    type: ClusterIP
+  port:
+    name: http
+    path: /health_check
+    potocol: TCP
+    containerPort: 3000
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: "1"
+      memory: 2Gi
+  readiness:
+    initialDelaySeconds: 30
+    periodSeconds: 30
+  liveness:
+    initialDelaySeconds: 30
+    periodSeconds: 30
+
 
 smtp:
   address: mail.gandi.net
