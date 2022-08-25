@@ -13,7 +13,7 @@ webapp:
     type: ClusterIP
   port:
     name: http
-    path: /
+    path: /health_check
     potocol: TCP
     containerPort: 3000
   resources:
