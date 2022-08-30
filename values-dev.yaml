@@ -1,5 +1,9 @@
+pr-env:
+ enabled: true
+ 
 host: http://localhost:3000
 domain_name: localhost
+public_url: recette.rdv-solidarites.fr
 
 maintenance_page_url: http://localhost:3000/maintenance.html
 

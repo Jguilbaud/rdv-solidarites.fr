@@ -1,0 +1,27 @@
+{{- if index .Values "pr-env" "enabled" -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-init
+  namespace: {{ .Values.common.namespace }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    metadata:
+      name: db-init
+    spec:
+      imagePullSecrets:
+      - name: docker-regcred
+      containers:
+        - name: db-init
+          image: "{{ .Values.image.repository }}/jobs:{{ .Values.image.tag }}"
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "bundle exec rake db:schema:load db:seed"
+      restartPolicy: Never
+{{- end -}}

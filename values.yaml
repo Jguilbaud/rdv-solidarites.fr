@@ -1,6 +1,8 @@
+pr-env:
+ enabled: true
+
 common:
   namespace: rdv-solidarites
-  
   
 image:
   repository: rgv1tgx4.gra7.container-registry.ovh.net/rdv-solidarite
@@ -74,4 +76,28 @@ franceconnect:
 sign_in_as_allowed: true
 
 
+host: http://localhost:3000
+domain_name: localhost
 
+maintenance_page_url: http://localhost:3000/maintenance.html
+
+matomo_app_ip: 124
+
+no_vhost: 0
+
+rails:
+  env: production
+  log_to_stdout: enabled
+  log_level: warn
+  serve_static_files: enabled
+
+rack:
+  env: production
+
+rdv_solidarites_instance_name: PRODUCTION
+
+redis_url: 
+  
+sentry_environment: staging
+
+environment: production

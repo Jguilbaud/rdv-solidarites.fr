@@ -53,10 +53,14 @@ spec:
                   name: csp-report-uri
                   key: csp_report_uri
             - name: DATABASE_URL
+            {{- if index .Values "pr-env" "enabled" -}}
+              value: {{ .Values.database_url | quote }}
+            {{- else -}}
               valueFrom:
                 secretKeyRef:
                   name: database-url
                   key: url
+            {{- end -}}
             - name: DEFAULT_SMS_PROVIDER
               value: {{ .Values.sms.default_provider | quote }}
             - name: DEFAULT_SMS_PROVIDER_KEY

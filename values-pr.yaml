@@ -1,12 +1,10 @@
 pr-env:
- enabled: false
+ enabled: true
 
-common:
-  namespace: rdv-solidarites-demo
 
 host: http://localhost:3000
 domain_name: localhost
-public_url: demo02.rdv-solidarites.fr
+#public_url: recette.rdv-solidarites.fr
 
 maintenance_page_url: http://localhost:3000/maintenance.html
 
@@ -23,10 +21,10 @@ rails:
 rack:
   env: production
 
-rdv_solidarites_instance_name: DEMO
+rdv_solidarites_instance_name: PRODUCTION
 
 redis_url: 
   
 sentry_environment: staging
 
-environment: demo
+environment: production

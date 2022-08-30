@@ -1,0 +1,64 @@
+{{- if index .Values "pr-env" "enabled" -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql
+  labels:
+    app: rdvs
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: rdvs
+    tier: postgreSQL
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-claim
+  labels:
+    app: rdvs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: postgresql
+  labels:
+    app: rdvs
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rdvs
+        tier: postgreSQL
+    spec:
+      containers:
+        - image: postgres:9.6.2-alpine
+          name: postgresql
+          env:
+            - name: POSTGRES_USER
+              value: rdvs
+            - name: POSTGRES_DB
+              value: rdvs
+            - name: POSTGRES_PASSWORD
+              value: rdvs
+          ports:
+            - containerPort: 5432
+              name: postgresql
+          volumeMounts:
+            - name: postgresql
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgresql
+          persistentVolumeClaim:
+            claimName: postgres-claim
+{{- end -}}
