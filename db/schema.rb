@@ -555,8 +555,8 @@ ActiveRecord::Schema.define(version: 2022_10_11_071059) do
     t.boolean "enable_address_details", default: false
     t.boolean "enable_context_field", default: false
     t.boolean "enable_motif_categories_field", default: false
-    t.boolean "enable_mail_to_agent_field", default: false
-    t.boolean "enable_changing_button_color_field", default: false
+    t.boolean "enable_waiting_room_mail_field", default: false
+    t.boolean "enable_waiting_room_color_field", default: false
     t.index ["departement_number"], name: "index_territories_on_departement_number", unique: true, where: "((departement_number)::text <> ''::text)"
   end
 

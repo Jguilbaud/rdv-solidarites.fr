@@ -51,11 +51,10 @@ class Territory < ApplicationRecord
     enable_context_field: :context,
   }.freeze
 
-  OPTIONAL_RDV_COLLECTIF_FIELD_TOGGLES = {
-    enable_mail_to_agent_field: :mail_to_agent
-    enable_changing_button_color_field: :changing_button_color
+  OPTIONAL_RDV_WAITING_ROOM_FIELD_TOGGLES = {
+    enable_waiting_room_mail_field: :mail_to_agent,
+    enable_waiting_room_color_field: :change_rdv_color,
   }.freeze
-
 
   OPTIONAL_MOTIF_FIELD_TOGGLES = {
     enable_motif_categories_field: :category,
