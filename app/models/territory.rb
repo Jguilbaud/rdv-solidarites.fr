@@ -75,11 +75,18 @@ class Territory < ApplicationRecord
   }.merge(SOCIAL_FIELD_TOGGLES).freeze
 
   def any_social_field_enabled?
+    # TODO: verifier que ça fonctionne bien
     attributes.slice(SOCIAL_FIELD_TOGGLES.keys).values.any?
   end
 
   def to_s
     [name, departement_number.presence].compact.join(" - ")
+  end
+
+  def waiting_room_enabled?
+    OPTIONAL_RDV_WAITING_ROOM_FIELD_TOGGLES.keys.any? do |waiting_room_field|
+      send(waiting_room_field)
+    end
   end
 
   private
