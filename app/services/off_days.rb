@@ -14,7 +14,7 @@ class OffDays
     Date.new(2020, 11, 1),
     Date.new(2020, 11, 11),
     Date.new(2020, 12, 25),
-  ].freeze
+  ].to_set.freeze
 
   JOURS_FERIES_2021 = [
     Date.new(2021, 1, 1),
@@ -28,7 +28,7 @@ class OffDays
     Date.new(2021, 11, 1),
     Date.new(2021, 11, 11),
     Date.new(2021, 12, 25),
-  ].freeze
+  ].to_set.freeze
 
   # https://www.service-public.fr/particuliers/vosdroits/F2405
   JOURS_FERIES_2022 = [
@@ -43,7 +43,22 @@ class OffDays
     Date.new(2022, 11, 1),
     Date.new(2022, 11, 11),
     Date.new(2022, 12, 25),
-  ].freeze
+  ].to_set.freeze
+
+  # https://www.service-public.fr/particuliers/vosdroits/F2405
+  JOURS_FERIES_2023 = [
+    Date.new(2023, 1, 1),
+    Date.new(2023, 4, 10),
+    Date.new(2023, 5, 1),
+    Date.new(2023, 5, 8),
+    Date.new(2023, 5, 18),
+    Date.new(2023, 5, 29),
+    Date.new(2023, 7, 14),
+    Date.new(2023, 8, 15),
+    Date.new(2023, 11, 1),
+    Date.new(2023, 11, 11),
+    Date.new(2023, 12, 25),
+  ].to_set.freeze
 
   def self.all_in_date_range(date_range)
     return [] if date_range.blank?
@@ -57,6 +72,11 @@ class OffDays
         d.in?(JOURS_FERIES_2021)
       when 2022
         d.in?(JOURS_FERIES_2022)
+      when 2023
+        d.in?(JOURS_FERIES_2023)
+      else
+        Sentry.capture_message("Liste des jours fériés manquante pour #{d.year}")
+        false
       end
     end
   end
