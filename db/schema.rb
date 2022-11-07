@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_152222) do
+ActiveRecord::Schema.define(version: 2022_11_07_104458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2022_10_20_152222) do
     "franceconnect_sign_up",
     "user_relative_creation",
     "agent_creation_api",
+    "prescripteur",
   ], force: :cascade
 
   create_enum :user_invited_through, [
@@ -405,6 +406,17 @@ ActiveRecord::Schema.define(version: 2022_10_20_152222) do
     t.index ["organisation_id"], name: "index_plage_ouvertures_on_organisation_id"
     t.index ["recurrence"], name: "index_plage_ouvertures_on_recurrence", where: "(recurrence IS NOT NULL)"
     t.index ["updated_at"], name: "index_plage_ouvertures_on_updated_at"
+  end
+
+  create_table "prescripteurs", force: :cascade do |t|
+    t.bigint "rdv_id", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rdv_id"], name: "index_prescripteurs_on_rdv_id", unique: true
   end
 
   create_table "rdvs", force: :cascade do |t|
