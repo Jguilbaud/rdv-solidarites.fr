@@ -14,5 +14,6 @@ class AddPrescripteurs < ActiveRecord::Migration[6.1]
     end
 
     add_index :prescripteurs, :rdv_id, unique: true
+    add_foreign_key :prescripteurs, :rdvs
   end
 end
