@@ -7,7 +7,7 @@ describe "CNFS agent can configure online booking" do
   before { login_as(agent, scope: :agent) }
 
   context "when there is no bookable motifs" do
-    it "goes to the right apge but can't copy the booking link", js: true do
+    it "goes to the right page but can't copy the booking link", js: true do
       visit authenticated_agent_root_path
       click_link "Paramètres"
       click_link "Réservation en ligne"
