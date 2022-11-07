@@ -194,6 +194,27 @@ RSpec.configure do |config|
             },
             required: %w[id email name phone_number],
           },
+          purposes: {
+            type: "object",
+            properties: {
+              purposes: {
+                type: "array",
+                items: { "$ref" => "#/components/schemas/purpose" },
+              },
+              meta: { "$ref" => "#/components/schemas/meta" },
+            },
+            required: %w[purposes meta],
+          },
+          purpose: {
+            type: "object",
+            properties: {
+              id: { type: "integer" },
+              label: { type: "string" },
+              organization_id: { type: "integer" },
+              group_id: { type: "integer" },
+            },
+            required: %w[id label organization_id group_id],
+          },
           organizations: {
             type: "object",
             properties: {
@@ -376,6 +397,10 @@ RSpec.configure do |config|
         {
           name: "Organisation",
           description: "Pour manipuler des organisations",
+        },
+        {
+          name: "Purpose",
+          description: "Pour manipuler des motifs",
         },
         {
           name: "PublicLink",
