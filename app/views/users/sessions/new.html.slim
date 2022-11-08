@@ -21,5 +21,5 @@
       hr
         .text-center
           p.text-muted
-            = link_to prescripteur_new_prescripteur_path(params: params.permit(:lieu_id, :motif_id, :starts_at)) do
+            = link_to prescripteur_new_prescripteur_path(@rdv_wizard.to_query) do
               b Je suis un prescripteur qui oriente un bénéficiaire

@@ -1,0 +1,30 @@
+= render "users/rdv_wizard_steps/stepper", step_title: "Prescripteur"
+
+main.container
+  .row
+    .col-lg-7.col-md-10.col-sm-11
+      .card
+        = render "users/rdv_wizard_steps/rdv_wizard_summary", rdv_wizard: @rdv_wizard if @rdv_wizard.present?
+        .card-body
+          h3 Bénéficiaire
+          p Indiquez les coordonnées de la personne qui viendra au rendez-vous
+
+          = simple_form_for User.new, url: prescripteur_confirmation_path do |f|
+            .form-group
+              .row
+                .col-6
+                  = f.input :first_name, required: true
+                .col-6
+                  = f.input :last_name, required: true
+
+            .form-group
+              .row
+                .col-12
+                  = f.input :email, as: :email, placeholder: "nom.prenom@email.com"
+            .form-group
+              .row
+                .col-12
+                  = f.input :phone_number, as: :tel, placeholder: "06..."
+
+            .form-group.mb-0.text-center
+              = f.submit "Confirmer le rendez-vous", class: "btn btn-primary"

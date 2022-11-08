@@ -215,7 +215,10 @@ Rails.application.routes.draw do
 
   scope "prescripteur" do
     get "new_prescripteur", to: "prescripteur_rdv_wizard#new_prescripteur", as: "prescripteur_new_prescripteur"
-    post "_prescripteur", to: "prescripteur_rdv_wizard#new_prescripteur", as: "prescripteur_new_prescripteur"
+    post "save_prescripteur", to: "prescripteur_rdv_wizard#save_prescripteur", as: "prescripteur_save_prescripteur"
+    get "new_user", to: "prescripteur_rdv_wizard#new_user", as: "prescripteur_new_user"
+    post "create_rdv", to: "prescripteur_rdv_wizard#create_rdv", as: "prescripteur_create_rdv"
+    get "confirmation", to: "prescripteur_rdv_wizard#confirmation", as: "prescripteur_confirmation"
   end
 
   %w[contact mds accessibility mentions_legales cgu politique_de_confidentialite domaines health_check].each do |page_name|
