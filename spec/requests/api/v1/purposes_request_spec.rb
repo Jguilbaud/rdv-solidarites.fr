@@ -16,6 +16,7 @@ describe "Purpose API", swagger_doc: "v1/api.json" do
 
       parameter name: :organization_id, in: :query, type: :integer, description: "ID de l'organisation sur laquelle filtrer les motifs", example: "1", required: false
       parameter name: :group_id, in: :query, type: :integer, description: "ID du groupe (territoire) sur lequel filtrer les motifs", example: "1", required: false
+      parameter name: :group_name, in: :query, type: :integer, description: "Nom du groupe (territoire) sur lequel filtrer les motifs", example: "1", required: false
 
       let(:organisation) { create(:organisation) }
 
@@ -41,10 +42,21 @@ describe "Purpose API", swagger_doc: "v1/api.json" do
         it { expect(parsed_response_body[:purposes]).not_to include(PurposeBlueprint.render_as_hash(unmatching)) }
       end
 
-      response 200, "Filtre par rapport à un ID de territoire", document: false do
+      response 200, "Filtre par rapport à un group_id (ID de territoire)", document: false do
         let!(:matching) { create(:motif) }
         let!(:unmatching) { create(:motif) }
         let(:group_id) { matching.organisation.territory_id }
+
+        run_test!
+
+        it { expect(parsed_response_body[:purposes]).to include(PurposeBlueprint.render_as_hash(matching)) }
+        it { expect(parsed_response_body[:purposes]).not_to include(PurposeBlueprint.render_as_hash(unmatching)) }
+      end
+
+      response 200, "Filtre par rapport à un group_name (departement_number de territoire)", document: false do
+        let!(:matching) { create(:motif) }
+        let!(:unmatching) { create(:motif) }
+        let(:group_name) { matching.organisation.territory.departement_number }
 
         run_test!
 
