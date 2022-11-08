@@ -13,7 +13,7 @@ class PrescripteurRdvWizardController < ApplicationController
   def new_prescripteur
     @step_title = @step_titles[1]
 
-    @prescripteur = Prescripteur.new(session[:prescripteur_attributes])
+    @prescripteur = Prescripteur.new(session[:autocomplete_prescripteur_attributes])
 
     set_rdv_wizard
   end
@@ -21,7 +21,7 @@ class PrescripteurRdvWizardController < ApplicationController
   def save_prescripteur
     prescripteur_attributes = params[:prescripteur].permit(:first_name, :last_name, :email, :phone_number)
 
-    session[:prescripteur_attributes] = prescripteur_attributes
+    session[:autocomplete_prescripteur_attributes] = prescripteur_attributes
 
     save_prescripteur_to_rdv_in_session(prescripteur_attributes)
 
