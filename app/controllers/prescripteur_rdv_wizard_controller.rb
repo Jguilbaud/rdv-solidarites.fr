@@ -5,9 +5,13 @@ class PrescripteurRdvWizardController < ApplicationController
                   @step_titles = ["Choix du rendez-vous", "Prescripteur", "Bénéficiaire", "Confirmation"]
                 }
 
+  def start
+    session[:rdv_wizard_attributes] = query_params
+    redirect_to prescripteur_new_prescripteur_path
+  end
+
   def new_prescripteur
     @step_title = @step_titles[1]
-    session[:rdv_wizard_attributes] = query_params
 
     @prescripteur = Prescripteur.new(session[:prescripteur_attributes])
 
@@ -46,7 +50,7 @@ class PrescripteurRdvWizardController < ApplicationController
   end
 
   def set_rdv_wizard
-    @rdv_wizard = UserRdvWizard::Base.new(nil, session[:rdv_wizard_attributes])
+    @rdv_wizard = PrescripteurRdvWizard.new(nil, session[:rdv_wizard_attributes])
   end
 
   def query_params

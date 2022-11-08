@@ -214,6 +214,7 @@ Rails.application.routes.draw do
   end
 
   scope "prescripteur" do
+    get "start", to: "prescripteur_rdv_wizard#start", as: "prescripteur_start"
     get "new_prescripteur", to: "prescripteur_rdv_wizard#new_prescripteur", as: "prescripteur_new_prescripteur"
     post "save_prescripteur", to: "prescripteur_rdv_wizard#save_prescripteur", as: "prescripteur_save_prescripteur"
     get "new_user", to: "prescripteur_rdv_wizard#new_user", as: "prescripteur_new_user"
