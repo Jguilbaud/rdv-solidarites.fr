@@ -6,35 +6,48 @@ class PrescripteurRdvWizardController < ApplicationController
                 }
 
   def new_prescripteur
+    @step_title = @step_titles[1]
     session[:rdv_wizard_attributes] = query_params
 
     @prescripteur = Prescripteur.new(session[:prescripteur_attributes])
 
-    @rdv_wizard = UserRdvWizard::Step1.new(nil, query_params)
+    set_rdv_wizard
   end
 
   def save_prescripteur
     prescripteur_attributes = params[:prescripteur].permit(:first_name, :last_name, :email, :phone_number)
+
     session[:prescripteur_attributes] = prescripteur_attributes
 
-    new_rdv_wizard_params = session[:rdv_wizard_attributes]
-    new_rdv_wizard_params[:prescripteur] = prescripteur_attributes
-    session[:rdv_wizard_attributes] = new_rdv_wizard_params
+    save_prescripteur_to_rdv_in_session(prescripteur_attributes)
 
     redirect_to prescripteur_new_user_path
   end
 
   def new_user
-    @rdv_wizard = UserRdvWizard::Step1.new(nil, session[:rdv_wizard_attributes])
+    @step_title = @step_titles[2]
+    set_rdv_wizard
   end
 
   def create_rdv
     redirect_to prescripteur_confirmation_path
   end
 
-  def confirmation; end
+  def confirmation
+    @step_title = @step_titles[3]
+  end
 
   private
+
+  def save_prescripteur_to_rdv_in_session(prescripteur_attributes)
+    new_rdv_wizard_params = session[:rdv_wizard_attributes]
+    new_rdv_wizard_params[:prescripteur] = prescripteur_attributes
+    session[:rdv_wizard_attributes] = new_rdv_wizard_params
+  end
+
+  def set_rdv_wizard
+    @rdv_wizard = UserRdvWizard::Base.new(nil, session[:rdv_wizard_attributes])
+  end
 
   def query_params
     params.permit(
