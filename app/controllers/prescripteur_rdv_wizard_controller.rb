@@ -34,6 +34,9 @@ class PrescripteurRdvWizardController < ApplicationController
   end
 
   def create_rdv
+    session[:rdv_wizard_attributes][:user] = params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
+    set_rdv_wizard
+    @rdv_wizard.create_rdv!
     redirect_to prescripteur_confirmation_path
   end
 
