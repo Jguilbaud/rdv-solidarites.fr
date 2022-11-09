@@ -14,7 +14,8 @@ class PrescripteurRdvWizard < UserRdvWizard::Base
       lieu: lieu,
       organisation: motif.organisation,
       agents: [creneau.agent],
-      users: [@user]
+      users: [@user],
+      prescripteur: @prescripteur
     )
     rdv.save!
   end

@@ -1,9 +1,7 @@
-
 RSpec.describe "prescripteur can create RDV for a user" do
   let!(:organisation) { create(:organisation) }
   let!(:agent) { create(:agent, :cnfs, admin_role_in_organisations: [organisation]) }
   let!(:motif) { create(:motif, organisation: organisation, service: agent.service, reservable_online: true) }
-  let(:prescripteur) { build(:prescripteur) }
 
   before do
     travel_to(Time.zone.parse("2022-11-07 15:00"))
@@ -17,13 +15,13 @@ RSpec.describe "prescripteur can create RDV for a user" do
     click_on "08:00"
     click_on "Je suis un prescripteur qui oriente un bénéficiaire"
 
-    fill_in "Votre prénom", with: prescripteur.first_name
-    fill_in "Votre nom", with: prescripteur.last_name
-    fill_in "Votre email professionnel", with: prescripteur.email
-    fill_in "Votre numéro de téléphone", with: prescripteur.phone_number
+    fill_in "Votre prénom", with: "Alex"
+    fill_in "Votre nom", with: "Prescripteur"
+    fill_in "Votre email professionnel", with: "alex@prescripteur.fr"
+    fill_in "Votre numéro de téléphone", with: "0611223344"
     click_on "Continuer"
 
-    expect(page).to have_content("Prescripteur : #{prescripteur.full_name}")
+    expect(page).to have_content("Prescripteur : Alex PRESCRIPTEUR")
     fill_in "Prénom", with: "Patricia"
     fill_in "Nom", with: "Duroy"
     fill_in "Email", with: "patricia_duroy@exemple.fr"
@@ -33,6 +31,12 @@ RSpec.describe "prescripteur can create RDV for a user" do
     created_rdv = Rdv.last
     expect(created_rdv.users.map(&:full_name)).to eq(["Patricia DUROY"])
     expect(created_rdv.agents).to eq([agent])
+    expect(created_rdv.prescripteur).to have_attributes(
+      first_name: "Alex",
+      last_name: "Prescripteur",
+      email: "alex@prescripteur.fr",
+      phone_number: "0611223344"
+    )
   end
 
   it "sends notifications to the user, agent and prescripteur" do
@@ -44,7 +48,6 @@ RSpec.describe "prescripteur can create RDV for a user" do
   end
 
   it "prevents hacker from changing motif_id in URL to create illegitimate RDV" do
-
   end
 
   context "when creneau is taken by someone else during booking process" do
