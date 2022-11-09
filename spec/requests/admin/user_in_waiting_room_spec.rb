@@ -5,7 +5,7 @@ RSpec.describe "Admin::UserInWaitingRoom", type: :request do
 
   let(:organisation) { create(:organisation) }
   let(:agent) { create(:agent, basic_role_in_organisations: [organisation]) }
-  let(:rdv) {create(:rdv, agents: [agent], organisation: organisation)}
+  let(:rdv) { create(:rdv, agents: [agent], organisation: organisation) }
 
   before { sign_in agent }
 
@@ -16,6 +16,5 @@ RSpec.describe "Admin::UserInWaitingRoom", type: :request do
       create_request
       expect(response).to redirect_to admin_organisation_rdv_path(rdv.organisation, rdv)
     end
-
   end
 end
