@@ -1,12 +1,14 @@
 RSpec.describe "prescripteur can create RDV for a user" do
   let!(:organisation) { create(:organisation) }
-  let!(:agent) { create(:agent, :cnfs, admin_role_in_organisations: [organisation]) }
+  let!(:agent) { create(:agent, :cnfs, admin_role_in_organisations: [organisation], rdv_notifications_level: "all") }
   let!(:motif) { create(:motif, organisation: organisation, service: agent.service, reservable_online: true) }
+  let!(:plage_ouverture) { create(:plage_ouverture, organisation: organisation, agent: agent, motifs: [motif]) }
 
   before do
     travel_to(Time.zone.parse("2022-11-07 15:00"))
-    create(:plage_ouverture, organisation: organisation, agent: agent, motifs: [motif])
   end
+
+  around { |example| perform_enqueued_jobs { example.run } }
 
   it "works" do
     visit public_link_to_org_path(organisation_id: organisation.id)
@@ -26,6 +28,8 @@ RSpec.describe "prescripteur can create RDV for a user" do
     fill_in "Nom", with: "Duroy"
     fill_in "Email", with: "patricia_duroy@exemple.fr"
     fill_in "Téléphone", with: "0623456789"
+
+    stub_netsize_ok
     expect { click_on "Confirmer le rendez-vous" }.to change(Rdv, :count).by(1)
 
     created_rdv = Rdv.last
@@ -37,6 +41,11 @@ RSpec.describe "prescripteur can create RDV for a user" do
       email: "alex@prescripteur.fr",
       phone_number: "0611223344"
     )
+
+    expect(email_sent_to("patricia_duroy@exemple.fr").subject).to include("RDV confirmé")
+    expect(email_sent_to(agent.email).subject).to include("Nouveau RDV ajouté sur votre agenda RDV Solidarités")
+    expect(email_sent_to("alex@prescripteur.fr").subject).to include("RDV confirmé")
+    expect(email_sent_to("alex@prescripteur.fr").body).to include("RDV Solidarités")
   end
 
   it "sends notifications to the user, agent and prescripteur" do

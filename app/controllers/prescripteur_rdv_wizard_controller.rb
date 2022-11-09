@@ -53,7 +53,7 @@ class PrescripteurRdvWizardController < ApplicationController
   end
 
   def set_rdv_wizard
-    @rdv_wizard = PrescripteurRdvWizard.new(nil, session[:rdv_wizard_attributes])
+    @rdv_wizard = PrescripteurRdvWizard.new(nil, session[:rdv_wizard_attributes], current_domain)
   end
 
   def query_params
