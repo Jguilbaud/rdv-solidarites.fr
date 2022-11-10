@@ -39,7 +39,11 @@ class Users::GeoSearch
   end
 
   def available_services
-    @available_services ||= Service.where(id: available_motifs.pluck(:service_id).uniq)
+    @available_services ||= if @suivi
+                              current_user.agents.map(&:service).uniq
+                            else
+                              Service.where(id: available_motifs.pluck(:service_id).uniq)
+                            end
   end
 
   def available_motifs
@@ -100,7 +104,7 @@ class Users::GeoSearch
   end
 
   def available_motifs_base
-    Motif.where(id: individual_motif + collective_motif).joins(:organisation)
+    Motif.where(id: individual_motif + collective_motif).where(follow_up: false).joins(:organisation)
   end
 
   def individual_motif

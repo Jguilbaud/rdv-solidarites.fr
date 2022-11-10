@@ -1,5 +1,10 @@
 ---
 fr:
+  search:
+    nothing_to_show:
+      default: La prise de rendez-vous n'est pas disponible pour ce département.
+      no_follower_agents: Nous n'avons pas retrouvé d'agent qui vous suit, vous ne pouvez donc pas prendre un RDV de suivi.
+      invitation_html: Nous sommes désolés, un problème semble s'être produit pour votre invitation. <br/><a href="mailto:%{email}?subject:[Problème invitation]" class="btn btn-primary"><span><i class="fa fa-envelope"></i>Envoyer une demande à l'équipe technique</span></a>
   admin:
     organisations:
       index:

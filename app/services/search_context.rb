@@ -2,7 +2,7 @@
 
 class SearchContext
   attr_reader :errors, :query, :departement, :address, :city_code, :street_ban_id, :latitude, :longitude,
-              :motif_name_with_location_type
+              :motif_name_with_location_type, :suivi
 
   def initialize(current_user, query = {})
     @current_user = current_user
@@ -22,12 +22,13 @@ class SearchContext
     @service_id = query[:service_id]
     @lieu_id = query[:lieu_id]
     @start_date = query[:date]
+    @suivi = query[:suivi] == "1"
   end
 
   # *** Method that outputs the next step for the user to complete its rdv journey ***
   # *** It is used in #to_partial_path to render the matching partial view ***
   def current_step
-    if address.blank? && @organisation_id.blank?
+    if show_address_selection?
       :address_selection
     elsif !service_selected?
       :service_selection
@@ -38,6 +39,10 @@ class SearchContext
     else
       :creneau_selection
     end
+  end
+
+  def show_address_selection?
+    address.blank? && @organisation_id.blank? && !@suivi
   end
 
   def to_partial_path
@@ -60,6 +65,7 @@ class SearchContext
                  elsif services.count == 1
                    services.first
                  end
+    @service
   end
 
   def services
@@ -91,7 +97,7 @@ class SearchContext
   def lieux
     @lieux ||= \
       Lieu
-        .with_open_slots_for_motifs(@matching_motifs)
+        .with_open_slots_for_motifs(matching_motifs)
         .includes(:organisation)
         .sort_by { |lieu| lieu.distance(@latitude.to_f, @longitude.to_f) }
   end
@@ -186,8 +192,33 @@ class SearchContext
         filter_motifs(geo_search.available_motifs).presence || filter_motifs(
           Motif.available_with_plages_ouvertures.where(organisation_id: @fallback_organisation_ids)
         )
+      elsif @suivi
+        filter_motifs(follow_up_motifs)
       else
         filter_motifs(geo_search.available_motifs)
       end
+  end
+
+  def follow_up_motifs
+    territories = @current_user.organisations.map(&:territory).uniq
+    raise StandarError, "Nous n'arrivons pas à retrouver votre département d'attachement" if territories.count < 1
+
+    # Il ne devrait y en avoir qu'un
+    # Certains usagers sont malgré tout
+    # sur plusieurs territoires
+    #
+    # irb(main):002:0> UserProfile.joins(:organisation).group("user_id").having("count(organisations.territory_id) > 1").count.count
+    # => 20779
+    #
+    territory = territories.first
+    Motif.active.reservable_online.where(follow_up: true).in_departement(territory.departement_number).where(service_id: service_ids)
+  end
+
+  def service_ids
+    if @service_id.present?
+      [@service_id]
+    else
+      @current_user.agents.pluck(:service_id)
+    end
   end
 end

@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 module SearchContextHelper
+  def path_to_service_selection(params)
+    root_path(motif_selection(params))
+  end
+
   def path_to_motif_selection(params)
     root_path(motif_selection(params))
   end
@@ -34,6 +38,7 @@ module SearchContextHelper
       address: params[:address],
       service_id: params[:service_id],
       organisation_id: params[:organisation_id],
+      suivi: params[:suivi],
     }
   end
 end

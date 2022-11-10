@@ -7,7 +7,18 @@ class SearchController < ApplicationController
   after_action :allow_iframe
 
   def search_rdv
+    authenticate_user! if search_params[:suivi] == "1"
     @context = SearchContext.new(current_user, search_params.to_h)
+    if search_params.keys.any? && @context.unique_motifs_by_name_and_location_type.empty?
+      @error_message_key = if @context.invitation?
+                             :invitation_html
+                           elsif @context.suivi && current_user.agents.empty?
+                             :no_follower_agents
+                           else
+                             :default
+                           end
+      render :nothing_to_show
+    end
   end
 
   def public_link_with_internal_organisation_id
@@ -35,7 +46,7 @@ class SearchController < ApplicationController
   def search_params
     params.permit(
       :latitude, :longitude, :address, :city_code, :departement, :street_ban_id,
-      :service_id, :lieu_id, :date, :motif_search_terms, :motif_name_with_location_type, :motif_category,
+      :service_id, :lieu_id, :date, :motif_search_terms, :motif_name_with_location_type, :motif_category, :suivi,
       :invitation_token, :organisation_id, organisation_ids: []
     )
   end

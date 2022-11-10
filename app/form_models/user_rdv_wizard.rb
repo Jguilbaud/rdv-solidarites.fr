@@ -48,6 +48,14 @@ module UserRdvWizard
     end
 
     def geo_search
+      # La geolocation est utilisé pour retrouver les
+      # agents lié au secteur concerné.
+      #
+      # Dans le cas d'un motif de suivi, ce sont les agents
+      # référents de l'usager qui servent de filtres.
+      # Pas besoin de geosearch dans ce cas.
+      return nil if motif.follow_up?
+
       @geo_search ||= Users::GeoSearch.new(**@attributes.slice(:departement, :city_code, :street_ban_id))
     end
 

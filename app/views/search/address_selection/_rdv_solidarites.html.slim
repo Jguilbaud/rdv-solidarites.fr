@@ -16,6 +16,15 @@ section.bg-primary.p-4
                 | Rechercher
 
 section
+  .container.mt-4.text-center
+    h2 Vous êtes déjà suivi par un agent ?
+    = link_to "?suivi=1", class: "btn btn-primary" do
+      strong
+        | Prendre directement RDV
+        span>
+        i.fa.fa-arrow-right
+
+section
   .container
     .row.mt-4
       .col-lg-12
