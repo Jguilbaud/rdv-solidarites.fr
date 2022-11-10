@@ -30,14 +30,25 @@ class PrescripteurRdvWizardController < ApplicationController
 
   def new_user
     @step_title = @step_titles[2]
+    @beneficiaire = BeneficiaireForm.new
     set_rdv_wizard
   end
 
   def create_rdv
-    session[:rdv_wizard_attributes][:user] = params.require(:user).permit(:first_name, :last_name, :email, :phone_number)
-    set_rdv_wizard
-    @rdv_wizard.create_rdv!
-    redirect_to prescripteur_confirmation_path
+    beneficiaire_params = params.require(:beneficiaire_form).permit(:first_name, :last_name, :email, :phone_number)
+
+    @beneficiaire = BeneficiaireForm.new(beneficiaire_params)
+
+    if @beneficiaire.valid?
+      session[:rdv_wizard_attributes][:user] = beneficiaire_params
+      set_rdv_wizard
+      @rdv_wizard.create_rdv!
+      redirect_to prescripteur_confirmation_path
+    else
+      @step_title = @step_titles[2]
+      set_rdv_wizard
+      render :new_user
+    end
   end
 
   def confirmation
