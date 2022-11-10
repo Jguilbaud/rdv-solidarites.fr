@@ -26,6 +26,10 @@ RSpec.describe "prescripteur can create RDV for a user" do
     expect(page).to have_content("Prescripteur : Alex PRESCRIPTEUR")
     fill_in "Prénom", with: "Patricia"
     fill_in "Nom", with: "Duroy"
+    click_on "Confirmer le rendez-vous"
+
+    expect(page).to have_content("Aucune notification ne sera envoyée au bénéficiaire") # TODO: améliorer le texte
+    click_on "Annuler et modifier"
     fill_in "Email", with: "patricia_duroy@exemple.fr"
     fill_in "Téléphone", with: "0623456789"
 

@@ -10,6 +10,7 @@ main.container
           p Indiquez les coordonnées de la personne qui viendra au rendez-vous
 
           = simple_form_for User.new, url: prescripteur_create_rdv_path do |f|
+            render("model_errors", model: @rdv_wizard, f: f)
             .form-group
               .row
                 .col-6
