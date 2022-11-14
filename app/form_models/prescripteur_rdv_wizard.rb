@@ -3,8 +3,8 @@
 class PrescripteurRdvWizard < UserRdvWizard::Base
   attr_accessor :prescripteur
 
-  def initialize(user, attributes, domain)
-    super(user, attributes)
+  def initialize(attributes, domain)
+    super(nil, attributes)
     @prescripteur = Prescripteur.new(attributes[:prescripteur]) if attributes[:prescripteur].present?
     @user = User.new(attributes[:user]) if attributes[:user].present?
     @domain = domain

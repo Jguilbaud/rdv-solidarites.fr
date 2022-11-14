@@ -217,7 +217,7 @@ Rails.application.routes.draw do
     get "start", to: "prescripteur_rdv_wizard#start", as: "prescripteur_start"
     get "new_prescripteur", to: "prescripteur_rdv_wizard#new_prescripteur", as: "prescripteur_new_prescripteur"
     post "save_prescripteur", to: "prescripteur_rdv_wizard#save_prescripteur", as: "prescripteur_save_prescripteur"
-    get "new_user", to: "prescripteur_rdv_wizard#new_user", as: "prescripteur_new_user"
+    get "new_beneficiaire", to: "prescripteur_rdv_wizard#new_beneficiaire", as: "prescripteur_new_beneficiaire"
     post "create_rdv", to: "prescripteur_rdv_wizard#create_rdv", as: "prescripteur_create_rdv"
     get "confirmation", to: "prescripteur_rdv_wizard#confirmation", as: "prescripteur_confirmation"
   end
