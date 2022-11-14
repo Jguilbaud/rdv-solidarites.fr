@@ -6,10 +6,11 @@ fr:
   agents:
     waiting_room_mailer:
       title: un usager en salle d'attente
-      description:
-        zero: "votre rdv va bientôt démarrer"
-        one: "%{users_name} vous attend pour son RDV"
-        other: "%{users_name} vous attendent pour leur RDV"
+      user_in_waiting_room:
+        description:
+          zero: "votre rdv va bientôt démarrer"
+          one: "%{users_name} vous attend pour son RDV"
+          other: "%{users_name} vous attendent pour leur RDV"
     absence_mailer:
       absence_created:
         title: "%{domain_name} - Indisponibilité créée - %{title}"

@@ -6,8 +6,6 @@ class Agents::AbsenceMailerPreview < ActionMailer::Preview
   private
 
   def absence_mailer
-    puts "*" *100
-    puts "absence mailer preview"
     Agents::AbsenceMailer.with(absence: Absence.last)
   end
 end

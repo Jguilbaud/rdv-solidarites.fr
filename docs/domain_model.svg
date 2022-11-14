@@ -152,21 +152,23 @@
 <!-- m_AgentTerritorialAccessRight -->
 <g id="node5" class="node">
 <title>m_AgentTerritorialAccessRight</title>
-<path fill="none" stroke="black" d="M1448.38,-947C1448.38,-947 1628.38,-947 1628.38,-947 1634.38,-947 1640.38,-953 1640.38,-959 1640.38,-959 1640.38,-1004 1640.38,-1004 1640.38,-1010 1634.38,-1016 1628.38,-1016 1628.38,-1016 1448.38,-1016 1448.38,-1016 1442.38,-1016 1436.38,-1010 1436.38,-1004 1436.38,-1004 1436.38,-959 1436.38,-959 1436.38,-953 1442.38,-947 1448.38,-947"/>
-<text text-anchor="start" x="1463.38" y="-1003.2" font-family="Arial Bold" font-size="11.00">AgentTerritorialAccessRight</text>
-<polyline fill="none" stroke="black" points="1436.38,-996 1640.38,-996 "/>
-<text text-anchor="start" x="1443.38" y="-982.5" font-family="Arial" font-size="10.00">allow_to_invite_agents </text>
-<text text-anchor="start" x="1546.38" y="-982.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean ∗</text>
-<text text-anchor="start" x="1443.38" y="-969.5" font-family="Arial" font-size="10.00">allow_to_manage_access_rights </text>
-<text text-anchor="start" x="1588.38" y="-969.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean ∗</text>
-<text text-anchor="start" x="1443.38" y="-956.5" font-family="Arial" font-size="10.00">allow_to_manage_teams </text>
-<text text-anchor="start" x="1555.38" y="-956.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean</text>
+<path fill="none" stroke="black" d="M1448.38,-940.5C1448.38,-940.5 1628.38,-940.5 1628.38,-940.5 1634.38,-940.5 1640.38,-946.5 1640.38,-952.5 1640.38,-952.5 1640.38,-1010.5 1640.38,-1010.5 1640.38,-1016.5 1634.38,-1022.5 1628.38,-1022.5 1628.38,-1022.5 1448.38,-1022.5 1448.38,-1022.5 1442.38,-1022.5 1436.38,-1016.5 1436.38,-1010.5 1436.38,-1010.5 1436.38,-952.5 1436.38,-952.5 1436.38,-946.5 1442.38,-940.5 1448.38,-940.5"/>
+<text text-anchor="start" x="1463.38" y="-1009.7" font-family="Arial Bold" font-size="11.00">AgentTerritorialAccessRight</text>
+<polyline fill="none" stroke="black" points="1436.38,-1002.5 1640.38,-1002.5 "/>
+<text text-anchor="start" x="1443.38" y="-989.5" font-family="Arial" font-size="10.00">allow_to_download_metrics </text>
+<text text-anchor="start" x="1567.38" y="-989.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean ∗</text>
+<text text-anchor="start" x="1443.38" y="-976.5" font-family="Arial" font-size="10.00">allow_to_invite_agents </text>
+<text text-anchor="start" x="1546.38" y="-976.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean ∗</text>
+<text text-anchor="start" x="1443.38" y="-963.5" font-family="Arial" font-size="10.00">allow_to_manage_access_rights </text>
+<text text-anchor="start" x="1588.38" y="-963.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean ∗</text>
+<text text-anchor="start" x="1443.38" y="-950.5" font-family="Arial" font-size="10.00">allow_to_manage_teams </text>
+<text text-anchor="start" x="1555.38" y="-950.5" font-family="Arial Italic" font-size="10.00" fill="#999999">boolean</text>
 </g>
 <!-- m_Agent&#45;&gt;m_AgentTerritorialAccessRight -->
 <g id="edge8" class="edge">
 <title>m_Agent&#45;&gt;m_AgentTerritorialAccessRight</title>
-<path fill="none" stroke="black" d="M1371.52,-1263.99C1422.48,-1178.02 1481.28,-1078.82 1513.7,-1024.13"/>
-<polygon fill="black" stroke="black" points="1516.6,-1025.41 1518.48,-1016.07 1511.18,-1022.2 1516.6,-1025.41"/>
+<path fill="none" stroke="black" d="M1371.52,-1263.99C1420.49,-1181.38 1476.71,-1086.54 1509.79,-1030.73"/>
+<polygon fill="black" stroke="black" points="1512.62,-1032.13 1514.5,-1022.78 1507.2,-1028.92 1512.62,-1032.13"/>
 </g>
 <!-- m_AgentTerritorialRole -->
 <g id="node6" class="node">
@@ -456,7 +458,7 @@
 <text text-anchor="start" x="392.38" y="-917.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string</text>
 </g>
 <!-- m_Lieu&#45;&gt;m_PlageOuverture -->
-<g id="edge27" class="edge">
+<g id="edge32" class="edge">
 <title>m_Lieu&#45;&gt;m_PlageOuverture</title>
 <path fill="none" stroke="black" d="M347.38,-907.92C347.38,-817.4 347.38,-663.78 347.38,-574.98"/>
 <polygon fill="black" stroke="black" points="350.53,-574.8 347.38,-565.8 344.23,-574.8 350.53,-574.8"/>
@@ -495,7 +497,7 @@
 <text text-anchor="start" x="124.38" y="-415" font-family="Arial Italic" font-size="10.00" fill="#999999">uuid ∗</text>
 </g>
 <!-- m_Lieu&#45;&gt;m_Rdv -->
-<g id="edge28" class="edge">
+<g id="edge18" class="edge">
 <title>m_Lieu&#45;&gt;m_Rdv</title>
 <path fill="none" stroke="black" d="M309.25,-907.85C293.01,-875.36 274.58,-836.28 260.38,-800 236.65,-739.37 215.1,-669.77 199.04,-613.52"/>
 <polygon fill="black" stroke="black" points="202,-612.4 196.51,-604.61 195.94,-614.13 202,-612.4"/>
@@ -548,14 +550,14 @@
 <text text-anchor="start" x="127.38" y="-846.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗</text>
 </g>
 <!-- m_Motif&#45;&gt;m_PlageOuverture -->
-<g id="edge32" class="edge">
+<g id="edge35" class="edge">
 <title>m_Motif&#45;&gt;m_PlageOuverture</title>
 <path fill="none" stroke="black" d="M246.23,-829.31C251.28,-819.53 256.05,-809.71 260.38,-800 293.48,-725.78 318.04,-635.53 332.48,-574.76"/>
 <polygon fill="black" stroke="black" points="243.32,-828.08 241.92,-837.51 248.89,-831.01 243.32,-828.08"/>
 <polygon fill="black" stroke="black" points="335.63,-575.12 334.62,-565.64 329.49,-573.68 335.63,-575.12"/>
 </g>
 <!-- m_Motif&#45;&gt;m_Rdv -->
-<g id="edge31" class="edge">
+<g id="edge17" class="edge">
 <title>m_Motif&#45;&gt;m_Rdv</title>
 <path fill="none" stroke="black" d="M155.77,-836.2C158.94,-764.59 162.7,-679.56 165.61,-613.72"/>
 <polygon fill="black" stroke="black" points="168.77,-613.69 166.02,-604.56 162.47,-613.41 168.77,-613.69"/>
@@ -597,44 +599,44 @@
 <text text-anchor="start" x="556.38" y="-1361.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string</text>
 </g>
 <!-- m_Organisation&#45;&gt;m_Absence -->
-<g id="edge21" class="edge">
+<g id="edge28" class="edge">
 <title>m_Organisation&#45;&gt;m_Absence</title>
 <path fill="none" stroke="black" d="M653.88,-1352C708.32,-1293.53 784.45,-1207.98 843.38,-1127 859.48,-1104.88 875.42,-1079.65 889.17,-1056.54"/>
 <polygon fill="black" stroke="black" points="891.88,-1058.14 893.74,-1048.79 886.45,-1054.94 891.88,-1058.14"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_AgentRole -->
-<g id="edge22" class="edge">
+<g id="edge29" class="edge">
 <title>m_Organisation&#45;&gt;m_AgentRole</title>
 <path fill="none" stroke="black" d="M612.95,-1351.51C651.71,-1252.49 719.19,-1080.08 745.96,-1011.68"/>
 <polygon fill="black" stroke="black" points="748.97,-1012.64 749.31,-1003.11 743.1,-1010.34 748.97,-1012.64"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_Lieu -->
-<g id="edge26" class="edge">
+<g id="edge31" class="edge">
 <title>m_Organisation&#45;&gt;m_Lieu</title>
 <path fill="none" stroke="black" d="M545.24,-1351.51C502.73,-1272.22 434.98,-1145.87 390.84,-1063.55"/>
 <polygon fill="black" stroke="black" points="393.41,-1061.67 386.38,-1055.23 387.85,-1064.65 393.41,-1061.67"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_Motif -->
-<g id="edge29" class="edge">
+<g id="edge33" class="edge">
 <title>m_Organisation&#45;&gt;m_Motif</title>
 <path fill="none" stroke="black" d="M526.56,-1351.9C478.7,-1295.21 406.57,-1217.22 331.38,-1163 301.39,-1141.37 284.89,-1150.55 256.38,-1127 253.76,-1124.83 251.17,-1122.59 248.61,-1120.28"/>
 <polygon fill="black" stroke="black" points="250.63,-1117.86 241.91,-1114.02 246.33,-1122.47 250.63,-1117.86"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_PlageOuverture -->
-<g id="edge36" class="edge">
+<g id="edge38" class="edge">
 <title>m_Organisation&#45;&gt;m_PlageOuverture</title>
 <path fill="none" stroke="black" d="M556.11,-1351.64C524.73,-1265.17 477.29,-1115.88 468.38,-982.5"/>
 <path fill="none" stroke="black" d="M468.38,-980.5C463.1,-901.42 401.33,-685.83 368.15,-574.53"/>
 <polygon fill="black" stroke="black" points="371.11,-573.44 365.52,-565.72 365.08,-575.24 371.11,-573.44"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_Rdv -->
-<g id="edge33" class="edge">
+<g id="edge16" class="edge">
 <title>m_Organisation&#45;&gt;m_Rdv</title>
 <path fill="none" stroke="black" d="M512.21,-1409.56C389.94,-1379.91 145.3,-1300.89 42.38,-1127 -53.38,-965.2 35.62,-742.87 105.46,-612.81"/>
 <polygon fill="black" stroke="black" points="108.3,-614.17 109.82,-604.76 102.76,-611.17 108.3,-614.17"/>
 </g>
 <!-- m_Organisation&#45;&gt;m_SectorAttribution -->
-<g id="edge35" class="edge">
+<g id="edge37" class="edge">
 <title>m_Organisation&#45;&gt;m_SectorAttribution</title>
 <path fill="none" stroke="black" d="M656.49,-1365.98C734.7,-1305.6 865.56,-1213.35 993.38,-1163 1075.79,-1130.54 1116.55,-1177.39 1189.38,-1127 1229.88,-1098.98 1254.72,-1045.41 1266.99,-1011.95"/>
 <polygon fill="black" stroke="black" points="1270.09,-1012.62 1270.12,-1003.09 1264.15,-1010.52 1270.09,-1012.62"/>
@@ -651,7 +653,7 @@
 <text text-anchor="start" x="676.38" y="-69" font-family="Arial Italic" font-size="10.00" fill="#999999">text</text>
 </g>
 <!-- m_Organisation&#45;&gt;m_UserProfile -->
-<g id="edge37" class="edge">
+<g id="edge39" class="edge">
 <title>m_Organisation&#45;&gt;m_UserProfile</title>
 <path fill="none" stroke="black" d="M468.38,-980.5C464.01,-915.14 451.07,-882.33 497.38,-836 554.75,-778.61 623.35,-861.43 676.38,-800 849.04,-599.99 759.48,-238.47 724.95,-123.86"/>
 <polygon fill="black" stroke="black" points="727.92,-122.79 722.28,-115.11 721.89,-124.63 727.92,-122.79"/>
@@ -670,19 +672,19 @@
 <text text-anchor="start" x="563.38" y="-956.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗</text>
 </g>
 <!-- m_Organisation&#45;&gt;m_WebhookEndpoint -->
-<g id="edge34" class="edge">
+<g id="edge36" class="edge">
 <title>m_Organisation&#45;&gt;m_WebhookEndpoint</title>
 <path fill="none" stroke="black" d="M584.38,-1351.51C584.38,-1258.52 584.38,-1100.8 584.38,-1025.29"/>
 <polygon fill="black" stroke="black" points="587.53,-1025.06 584.38,-1016.06 581.23,-1025.06 587.53,-1025.06"/>
 </g>
 <!-- m_Rdv&#45;&gt;m_AgentsRdv -->
-<g id="edge24" class="edge">
+<g id="edge20" class="edge">
 <title>m_Rdv&#45;&gt;m_AgentsRdv</title>
 <path fill="none" stroke="black" d="M173.08,-405.49C180.54,-339.4 202.02,-256.25 260.38,-210 307.42,-172.72 739.69,-180.31 799.38,-174 982.95,-154.59 1196.94,-120.77 1310.99,-101.84"/>
 <polygon fill="black" stroke="black" points="1311.67,-104.92 1320.03,-100.34 1310.64,-98.71 1311.67,-104.92"/>
 </g>
 <!-- m_Rdv&#45;&gt;m_FileAttente -->
-<g id="edge25" class="edge">
+<g id="edge19" class="edge">
 <title>m_Rdv&#45;&gt;m_FileAttente</title>
 <path fill="none" stroke="black" d="M166.11,-405.41C162.21,-315.14 156.64,-186.43 153.95,-124.31"/>
 <polygon fill="black" stroke="black" points="157.1,-124.14 153.56,-115.28 150.8,-124.41 157.1,-124.14"/>
@@ -717,7 +719,7 @@
 <text text-anchor="start" x="294.38" y="-10" font-family="Arial Italic" font-size="10.00" fill="#999999">enum ∗</text>
 </g>
 <!-- m_Rdv&#45;&gt;m_RdvsUser -->
-<g id="edge38" class="edge">
+<g id="edge21" class="edge">
 <title>m_Rdv&#45;&gt;m_RdvsUser</title>
 <path fill="none" stroke="black" d="M192.1,-405.33C207.04,-346.79 229.74,-272.11 260.38,-210 265.06,-200.52 270.44,-190.98 276.19,-181.63"/>
 <polygon fill="black" stroke="black" points="278.97,-183.13 281.09,-173.83 273.63,-179.77 278.97,-183.13"/>
@@ -748,7 +750,7 @@
 <text text-anchor="start" x="537.38" y="-23" font-family="Arial Italic" font-size="10.00" fill="#999999">string</text>
 </g>
 <!-- m_Rdv&#45;&gt;m_Receipt -->
-<g id="edge39" class="edge">
+<g id="edge22" class="edge">
 <title>m_Rdv&#45;&gt;m_Receipt</title>
 <path fill="none" stroke="black" d="M175.1,-405.47C183.58,-340.67 205.44,-259.07 260.38,-210 325.46,-151.87 376.06,-214.45 453.38,-174 458.02,-171.57 462.58,-168.81 467.02,-165.81"/>
 <polygon fill="black" stroke="black" points="468.89,-168.34 474.38,-160.54 465.23,-163.22 468.89,-168.34"/>
@@ -813,7 +815,7 @@
 <polygon fill="black" stroke="black" points="1279.53,-1696.78 1276.38,-1687.78 1273.23,-1696.78 1279.53,-1696.78"/>
 </g>
 <!-- m_Service&#45;&gt;m_Motif -->
-<g id="edge30" class="edge">
+<g id="edge34" class="edge">
 <title>m_Service&#45;&gt;m_Motif</title>
 <path fill="none" stroke="black" d="M1204.34,-1981.71C1054.95,-1956.94 707.87,-1881.09 497.38,-1688 333.66,-1537.82 237.49,-1293.62 189.13,-1135.54"/>
 <polygon fill="black" stroke="black" points="192.07,-1134.37 186.44,-1126.67 186.04,-1136.2 192.07,-1134.37"/>
@@ -837,7 +839,7 @@
 <text text-anchor="start" x="1043.38" y="-1413.5" font-family="Arial Italic" font-size="10.00" fill="#999999">string ∗ U</text>
 </g>
 <!-- m_Team&#45;&gt;m_AgentTeam -->
-<g id="edge23" class="edge">
+<g id="edge30" class="edge">
 <title>m_Team&#45;&gt;m_AgentTeam</title>
 <path fill="none" stroke="black" d="M1081.46,-1403.77C1085.22,-1331.43 1097.78,-1090.14 1101.99,-1009.22"/>
 <polygon fill="black" stroke="black" points="1105.16,-1008.89 1102.48,-999.74 1098.87,-1008.56 1105.16,-1008.89"/>
@@ -888,32 +890,32 @@
 <text text-anchor="start" x="1479.38" y="-1864" font-family="Arial Italic" font-size="10.00" fill="#999999">enum</text>
 </g>
 <!-- m_Territory&#45;&gt;m_AgentTerritorialAccessRight -->
-<g id="edge20" class="edge">
+<g id="edge27" class="edge">
 <title>m_Territory&#45;&gt;m_AgentTerritorialAccessRight</title>
 <path fill="none" stroke="black" d="M1507.72,-1854.24C1510.38,-1739.34 1517.86,-1571.57 1538.38,-1426.5"/>
-<path fill="none" stroke="black" d="M1538.38,-1424.5C1558.91,-1279.39 1548.81,-1104.79 1542.35,-1025.46"/>
-<polygon fill="black" stroke="black" points="1545.47,-1024.98 1541.59,-1016.27 1539.19,-1025.5 1545.47,-1024.98"/>
+<path fill="none" stroke="black" d="M1538.38,-1424.5C1558.38,-1283.12 1549.31,-1113.74 1542.86,-1031.77"/>
+<polygon fill="black" stroke="black" points="1545.99,-1031.4 1542.12,-1022.68 1539.71,-1031.91 1545.99,-1031.4"/>
 </g>
 <!-- m_Territory&#45;&gt;m_AgentTerritorialRole -->
-<g id="edge19" class="edge">
+<g id="edge26" class="edge">
 <title>m_Territory&#45;&gt;m_AgentTerritorialRole</title>
 <path fill="none" stroke="black" d="M1538.38,-1424.5C1554.77,-1308.67 1497.92,-1256.39 1568.38,-1163 1593.58,-1129.59 1623.73,-1154.38 1655.38,-1127 1693.36,-1094.15 1719.13,-1040.2 1731.95,-1008.34"/>
 <polygon fill="black" stroke="black" points="1735.03,-1009.12 1735.37,-999.59 1729.16,-1006.83 1735.03,-1009.12"/>
 </g>
 <!-- m_Territory&#45;&gt;m_Organisation -->
-<g id="edge17" class="edge">
+<g id="edge24" class="edge">
 <title>m_Territory&#45;&gt;m_Organisation</title>
 <path fill="none" stroke="black" d="M1463.36,-1854.36C1441.06,-1805.35 1408.54,-1754.74 1362.38,-1724 1293.81,-1678.33 1071.24,-1714.94 993.38,-1688 868,-1644.62 742.16,-1555.71 663.84,-1493.67"/>
 <polygon fill="black" stroke="black" points="665.41,-1490.89 656.41,-1487.75 661.48,-1495.82 665.41,-1490.89"/>
 </g>
 <!-- m_Territory&#45;&gt;m_Sector -->
-<g id="edge18" class="edge">
+<g id="edge25" class="edge">
 <title>m_Territory&#45;&gt;m_Sector</title>
 <path fill="none" stroke="black" d="M1542.4,-1854.39C1575.35,-1728.47 1622.1,-1549.86 1643.23,-1469.09"/>
 <polygon fill="black" stroke="black" points="1646.33,-1469.7 1645.56,-1460.19 1640.24,-1468.1 1646.33,-1469.7"/>
 </g>
 <!-- m_Territory&#45;&gt;m_Team -->
-<g id="edge16" class="edge">
+<g id="edge23" class="edge">
 <title>m_Territory&#45;&gt;m_Team</title>
 <path fill="none" stroke="black" d="M1461,-1854.27C1438.56,-1806.16 1406.56,-1756.19 1362.38,-1724 1290.8,-1671.84 1233.12,-1746.22 1166.38,-1688 1097.41,-1627.83 1083.5,-1511.35 1080.87,-1456.48"/>
 <polygon fill="black" stroke="black" points="1084.01,-1456.15 1080.51,-1447.28 1077.72,-1456.4 1084.01,-1456.15"/>
