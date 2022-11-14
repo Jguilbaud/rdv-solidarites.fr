@@ -41,7 +41,7 @@ class PrescripteurRdvWizardController < ApplicationController
   end
 
   def create_rdv
-    beneficiaire_params = params.require(:beneficiaire_form).permit(:first_name, :last_name, :email, :phone_number)
+    beneficiaire_params = params.require(:beneficiaire_form).permit(*BeneficiaireForm::ATTRIBUTES)
 
     @beneficiaire = BeneficiaireForm.new(beneficiaire_params)
 
