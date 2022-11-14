@@ -44,19 +44,7 @@ describe "Organization API", swagger_doc: "v1/api.json" do
         it { expect(parsed_response_body[:organizations]).to match([]) }
       end
 
-      response 429, "Limite d'appels atteinte" do
-        schema "$ref" => "#/components/schemas/error_too_many_request"
-
-        before do
-          Rack::Attack.enabled = true
-          Rack::Attack.reset!
-          3.times do
-            get api_v1_organizations_path
-          end
-        end
-
-        run_test!
-      end
+      it_behaves_like "a rate limited endpoint", :get, Rails.application.routes.url_helpers.api_v1_organizations_path
     end
   end
 end
